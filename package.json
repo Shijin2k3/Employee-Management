@@ -1,12 +1,12 @@
 {
-  "name": "church_management",
+  "name": "employee-management",
   "version": "1.0.0",
-  "description": "Employee management website using react js,nodejs,expressjs,mongoDb",
+  "description": "employee management using MERN STACK",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Backend - shijin,frontend - pravin",
+  "author": "Shijin",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.7",
