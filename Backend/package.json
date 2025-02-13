@@ -1,0 +1,16 @@
+{
+  "name": "church_management",
+  "version": "1.0.0",
+  "description": "church management website using next js,nodejs,expressjs,mongoDb",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Backend - shijin,frontend - pravin",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.0"
+  }
+}
