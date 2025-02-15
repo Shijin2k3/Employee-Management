@@ -6,7 +6,7 @@ const connectDatabase= async() =>{
     .then(con =>{
         console.log(`MongoDB is connected to the host ${con.connection.host}`);
     }).catch((err) => {
-        console.log(err)
+        console.log("Connection Error",err)
     })
 }
 module.exports=connectDatabase;

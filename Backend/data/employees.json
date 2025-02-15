@@ -1,0 +1,66 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": 1234567890,
+        "position": "Software Engineer",
+        "department": "IT",
+        "dateOfJoining": "2023-01-15T00:00:00Z",
+        "salary": 60000,
+        "address": {
+            "street": "123 Main St",
+            "city": "New York",
+            "state": "NY",
+            "zipCode": 10001
+        },
+        "isActive": true
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "phone": 987654321,
+        "position": "Project Manager",
+        "department": "Operations",
+        "dateOfJoining": "2022-05-20T00:00:00Z",
+        "salary": 80000,
+        "address": {
+            "street": "456 Elm St",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zipCode": 90001
+        },
+        "isActive": true
+    },
+    {
+        "name": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "phone": 5551234567,
+        "position": "HR Specialist",
+        "department": "Human Resources",
+        "dateOfJoining": "2021-11-01T00:00:00Z",
+        "salary": 50000,
+        "address": {
+            "street": "789 Oak St",
+            "city": "Chicago",
+            "state": "IL",
+            "zipCode": 60601
+        },
+        "isActive": false
+    },
+    {
+        "name": "Bob Brown",
+        "email": "bob.brown@example.com",
+        "phone": 4449876543,
+        "position": "Data Analyst",
+        "department": "Analytics",
+        "dateOfJoining": "2023-03-10T00:00:00Z",
+        "salary": 55000,
+        "address": {
+            "street": "321 Pine St",
+            "city": "Houston",
+            "state": "TX",
+            "zipCode": 77001
+        },
+        "isActive": true
+    }
+]

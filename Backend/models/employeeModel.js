@@ -4,7 +4,7 @@ const  mongoose=require('mongoose');
 const employeeSchema=new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: [true,"Please enteryour name"],
         trim: true
     },
     email: {
@@ -12,7 +12,7 @@ const employeeSchema=new mongoose.Schema({
         required: [true,"Please enter email"]
     },
     phone: {
-        type: String,
+        type: Number,
         required: [true,"Please enter phone number"],
         trim: true,
         maxLength:10
@@ -51,7 +51,7 @@ const employeeSchema=new mongoose.Schema({
             trim: true
         },
         zipCode: {
-            type: String,
+            type: Number,
             trim: true
         }
     },
