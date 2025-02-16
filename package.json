@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start":"nodemon Backend/server.js",
     "dev":"set NODE_ENV=development && nodemon Backend/server.js",
-    "prod":"set NODE_ENV=production && nodemon Backend/server.js"
+    "prod":"set NODE_ENV=production && nodemon Backend/server.js",
+    "seeder":"node Backend/utils/seeder.js"
   },
   "author": "Shijin",
   "license": "ISC",
