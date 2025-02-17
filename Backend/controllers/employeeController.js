@@ -29,7 +29,7 @@ exports.newEmployee= async(req,res,next)=>{
   }
 }
 
-//get single product 
+//get single product  -api/v1/employee/:id
 exports.getSingleEmployee=async(req,res,next)=>{
   const employee = await Employee.findById(req.params.id);
    if(!employee){
@@ -42,4 +42,23 @@ exports.getSingleEmployee=async(req,res,next)=>{
     success:true,
     employee
    })
+}
+
+//update employee -api/v1/employee/:id
+exports.updateEmployee=async(req,res,next)=>{
+  let employee=await Employee.findById(req.params.id);
+  if(!employee){
+    return res.status(404).json({
+           success:false,
+           message:"Employee not found"
+   })
+  }
+   employee=await Employee.findByIdAndUpdate(req.params.id,req.body,{
+   new:true,
+   runValidators:true
+  })
+ res.status(200).json({
+  success:true,
+  employee
+ })
 }
