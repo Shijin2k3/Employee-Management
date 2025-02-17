@@ -62,3 +62,20 @@ exports.updateEmployee=async(req,res,next)=>{
   employee
  })
 }
+
+//delete Employee-api/v1/employee/:id
+
+exports.deleteEmployee=async(req,res,next)=>{
+  let employee=await Employee.findById(req.params.id);
+  if(!employee){
+    return res.status(404).json({
+           success:false,
+           message:"Employee not found"
+   })
+  }
+  employee=await Employee.findByIdAndDelete(req.params.id)
+  res.status(200).json({
+    success:true,
+    message:"Employee deleted"
+  })
+}
