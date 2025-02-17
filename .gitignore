@@ -2,3 +2,14 @@ node_modules/
 build/
 .env
 .DS_Store
+**/node_modules
+
+# Turbo build cache
+.turbo
+
+# Environment variables
+*.env
+!.env.example  # Keep an example file for reference
+
+# pnpm lock file (should be committed)
+.pnpm-store

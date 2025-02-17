@@ -1,12 +1,17 @@
 const Employee=require('../models/employeeModel')
 
+//get employees -api/v1/employees
 exports.getEmployees= async(req,res,next)=>{
     const employees = await Employee.find();
     res.status(200).json({
         success:true,
-        message:"Employee API working successfully",
+        count:employees.length,
+        employees,
     })
 }
+
+
+//post new employees -api/v1/employee/new
 exports.newEmployee= async(req,res,next)=>{
   try{  
    const employee=await Employee.create(req.body);
@@ -22,4 +27,19 @@ exports.newEmployee= async(req,res,next)=>{
         error: err.message
     })
   }
+}
+
+//get single product 
+exports.getSingleEmployee=async(req,res,next)=>{
+  const employee = await Employee.findById(req.params.id);
+   if(!employee){
+     return res.status(404).json({
+            success:false,
+            message:"Employee not found"
+    })
+   }
+   res.status(201).json({
+    success:true,
+    employee
+   })
 }
