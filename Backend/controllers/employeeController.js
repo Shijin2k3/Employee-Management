@@ -1,5 +1,5 @@
 const Employee=require('../models/employeeModel')
-
+const ErrorHandler=require('../utils/errorHandler')
 //get employees -api/v1/employees
 exports.getEmployees= async(req,res,next)=>{
     const employees = await Employee.find();
@@ -13,30 +13,21 @@ exports.getEmployees= async(req,res,next)=>{
 
 //post new employees -api/v1/employee/new
 exports.newEmployee= async(req,res,next)=>{
-  try{  
+  
    const employee=await Employee.create(req.body);
    res.status(201).json({
     success:true,
     employee
    })
-  }catch(err){
-    console.error(err);
-    res.status(400).json({
-        success:false,
-        message:"Employee is not created",
-        error: err.message
-    })
-  }
+ 
 }
 
 //get single product  -api/v1/employee/:id
 exports.getSingleEmployee=async(req,res,next)=>{
   const employee = await Employee.findById(req.params.id);
    if(!employee){
-     return res.status(404).json({
-            success:false,
-            message:"Employee not found"
-    })
+    
+    return next(new ErrorHandler("employee not found",400))
    }
    res.status(201).json({
     success:true,
