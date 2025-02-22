@@ -1,5 +1,6 @@
 const Employee=require('../models/employeeModel')
 const ErrorHandler=require('../utils/errorHandler')
+const catchAsyncError=require('../middlewares/catchAsyncError')
 //get employees -api/v1/employees
 exports.getEmployees= async(req,res,next)=>{
     const employees = await Employee.find();
@@ -12,7 +13,7 @@ exports.getEmployees= async(req,res,next)=>{
 
 
 //post new employees -api/v1/employee/new
-exports.newEmployee= async(req,res,next)=>{
+exports.newEmployee= catchAsyncError(async(req,res,next)=>{
   
    const employee=await Employee.create(req.body);
    res.status(201).json({
@@ -20,7 +21,7 @@ exports.newEmployee= async(req,res,next)=>{
     employee
    })
  
-}
+})
 
 //get single product  -api/v1/employee/:id
 exports.getSingleEmployee=async(req,res,next)=>{
