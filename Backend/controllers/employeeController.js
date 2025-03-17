@@ -1,9 +1,14 @@
 const Employee=require('../models/employeeModel')
 const ErrorHandler=require('../utils/errorHandler')
 const catchAsyncError=require('../middlewares/catchAsyncError')
+const APIFeatures=require('../utils/apiFeatures')
+
 //get employees -api/v1/employees
 exports.getEmployees= async(req,res,next)=>{
-    const employees = await Employee.find();
+
+    const apiFeatures= new APIFeatures(Employee.find(),req.query).search 
+
+    const employees = await apiFeatures.query;
     res.status(200).json({
         success:true,
         count:employees.length,
