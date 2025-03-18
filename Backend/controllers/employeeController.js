@@ -4,17 +4,18 @@ const catchAsyncError=require('../middlewares/catchAsyncError')
 const APIFeatures=require('../utils/apiFeatures')
 
 //get employees -api/v1/employees
-exports.getEmployees= async(req,res,next)=>{
+exports.getEmployees=catchAsyncError(async(req,res,next)=>{
+    const resPerPage=2;
 
-    const apiFeatures= new APIFeatures(Employee.find(),req.query).search 
+    const apiFeatures= new APIFeatures(Employee.find(),req.query).search().paginate(resPerPage); 
 
     const employees = await apiFeatures.query;
     res.status(200).json({
         success:true,
-        count:employees.length,
         employees,
     })
-}
+  }
+  )
 
 
 //post new employees -api/v1/employee/new

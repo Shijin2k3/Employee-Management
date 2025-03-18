@@ -1,6 +1,6 @@
 class APIFeatures{
     constructor(query,queryStr){
-        this.query=queryStr;
+        this.query=query;
         this.queryStr=queryStr
     }
 
@@ -14,6 +14,13 @@ class APIFeatures{
 
        this.query.find({...keyword})
        return this;
+    }
+    paginate(resPerPage){
+      const currentPage=Number(this.queryStr.page) || 1;
+      console.log(currentPage)
+      const skip=resPerPage * (currentPage - 1);
+      this.query.limit(resPerPage).skip(skip);
+      return this
     }
 }
 module.exports=APIFeatures;
