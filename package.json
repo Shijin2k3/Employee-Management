@@ -5,14 +5,15 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon Backend/server.js",
-    "dev":"set NODE_ENV=development && nodemon Backend/server.js",
-    "prod":"set NODE_ENV=production && nodemon Backend/server.js",
-    "seeder":"node Backend/utils/seeder.js"
+    "start": "nodemon Backend/server.js",
+    "dev": "set NODE_ENV=development && nodemon Backend/server.js",
+    "prod": "set NODE_ENV=production && nodemon Backend/server.js",
+    "seeder": "node Backend/utils/seeder.js"
   },
   "author": "Shijin",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.10.0"
