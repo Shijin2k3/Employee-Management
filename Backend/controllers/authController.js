@@ -29,8 +29,8 @@ exports.loginUser=catchASyncError(async(req,res,next)=>{
         return next(new ErrorHandler('Invalid email or password',400))
     }
     
-    if(user.isValidPassword(password)){
-        return next(new ErrorHandler('Invalid email or password'))
+    if(!user.isValidPassword(password)){
+        return next(new ErrorHandler('Invalid email or password',400))
     }
 
       sendToken(user,201,res)
