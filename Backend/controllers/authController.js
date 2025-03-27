@@ -1,5 +1,8 @@
 const catchASyncError=require('../middlewares/catchAsyncError')
 const User=require('../models/userModel')
+const ErrorHandler=require('../utils/errorHandler')
+
+const sendToken=require('../utils/jwt');
 //register user
 exports.registerUser=catchASyncError(async(req,res,next)=>{
 
@@ -9,9 +12,26 @@ exports.registerUser=catchASyncError(async(req,res,next)=>{
         email,
         password
     })
-    res.status(201).json({
-        success:true,
-        user
-    })
+    
+    sendToken(user,201,res)
 
+})
+
+exports.loginUser=catchASyncError(async(req,res,next)=>{
+    const {email,password}=req.body
+    if(!email || !password){
+       return next(new ErrorHandler('Please enter email & password',400))
+    }
+    //finding user database
+    const user = await User.findOne({email}).select('+password');
+    
+    if(!user){
+        return next(new ErrorHandler('Invalid email or password',400))
+    }
+    
+    if(user.isValidPassword(password)){
+        return next(new ErrorHandler('Invalid email or password'))
+    }
+
+      sendToken(user,201,res)
 })
