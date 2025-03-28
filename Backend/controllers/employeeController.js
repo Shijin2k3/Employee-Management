@@ -30,7 +30,7 @@ exports.newEmployee= catchAsyncError(async(req,res,next)=>{
 })
 
 //get single product  -api/v1/employee/:id
-exports.getSingleEmployee=async(req,res,next)=>{
+exports.getSingleEmployee=catchAsyncError(async(req,res,next)=>{
   const employee = await Employee.findById(req.params.id);
    if(!employee){
     
@@ -40,10 +40,10 @@ exports.getSingleEmployee=async(req,res,next)=>{
     success:true,
     employee
    })
-}
+})
 
 //update employee -api/v1/employee/:id
-exports.updateEmployee=async(req,res,next)=>{
+exports.updateEmployee=catchAsyncError(async(req,res,next)=>{
   let employee=await Employee.findById(req.params.id);
   if(!employee){
     return res.status(404).json({
@@ -59,11 +59,11 @@ exports.updateEmployee=async(req,res,next)=>{
   success:true,
   employee
  })
-}
+})
 
 //delete Employee-api/v1/employee/:id
 
-exports.deleteEmployee=async(req,res,next)=>{
+exports.deleteEmployee=catchAsyncError(async(req,res,next)=>{
   let employee=await Employee.findById(req.params.id);
   if(!employee){
     return res.status(404).json({
@@ -76,4 +76,4 @@ exports.deleteEmployee=async(req,res,next)=>{
     success:true,
     message:"Employee deleted"
   })
-}
+})
