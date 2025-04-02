@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
-const bcrypt=require('bcrypt')
-const jwt=require('jsonwebtoken')
+const bcrypt=require('bcrypt');
+const jwt=require('jsonwebtoken');
+const crypto=require('crypto');
 
 
 const userSchema= new mongoose.Schema({
@@ -22,7 +23,8 @@ const userSchema= new mongoose.Schema({
     },
     role:{
         type:String,
-        default:'user'
+        enum:['admin','employee'],
+        required:true
     },
     resetPasswordToken:{
         type:String
@@ -43,6 +45,16 @@ userSchema.methods.getJwtToken=function(){
 }
 userSchema.methods.isValidPassword=async function(enteredPassword){
     return await bcrypt.compare(enteredPassword,this.password)
+}
+userSchema.methods.getResetToken=function(){
+    //generate token
+    const token=crypto.randomBytes(20).toString('hex');
+    //generate hash and reset password
+    this.resetPasswordToken = crypto.createHash('sha256').update(token).digest('hex');
+
+    //set token expire time
+    this.resetPasswordTokenExpire=Date.now() + 30 * 60 *1000;
+    return token;
 }
 
  let model=mongoose.model('User',userSchema);
