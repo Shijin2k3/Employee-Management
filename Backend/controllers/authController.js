@@ -1,6 +1,7 @@
 const catchAsyncError = require('../middlewares/catchAsyncError');
 const catchASyncError=require('../middlewares/catchAsyncError')
-const User=require('../models/userModel')
+const User=require('../models/userModel');
+const sendEmail = require('../utils/email');
 const ErrorHandler=require('../utils/errorHandler')
 
 const sendToken=require('../utils/jwt');
@@ -55,7 +56,7 @@ exports.forgotPassword=catchAsyncError(async(req,res,next)=>{
     return next(new ErrorHandler('User not Found with this email',404))
    }
    const resetToken =  user.getResetToken();
-   user.save({validateBeforeSave:false})
+   await user.save({validateBeforeSave:false})
 
    //Create reset url
    const resetUrl=`${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`
@@ -65,7 +66,15 @@ exports.forgotPassword=catchAsyncError(async(req,res,next)=>{
 
     try{
 
-        
+        sendEmail({
+            email:user.email,
+            subject:'EMS Passwor Recovery',
+            message
+        })
+        res.status(200).json({
+            success:true,
+            message:`Email sent to ${user.email}`
+        })
 
     }catch(error){
         user.resetPasswordToken=undefined;

@@ -23,8 +23,8 @@ const userSchema= new mongoose.Schema({
     },
     role:{
         type:String,
-        enum:['admin','employee'],
-        required:true
+        default:'employee'
+        
     },
     resetPasswordToken:{
         type:String
@@ -36,7 +36,10 @@ const userSchema= new mongoose.Schema({
     }
 })
 userSchema.pre('save',async function (next){
-this.password = await bcrypt.hash(this.password,10)
+   if(!this.isModified('password')){
+    next()
+   }
+    this.password = await bcrypt.hash(this.password,10)
 })
 userSchema.methods.getJwtToken=function(){
      return jwt.sign({id:this.id},process.env.JWT_SECRET,{
