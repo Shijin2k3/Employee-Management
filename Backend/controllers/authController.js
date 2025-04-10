@@ -125,6 +125,13 @@ exports.changePassword = catchAsyncError(async(req,res,next)=>{
 
     //check old password 
     if(await user.isValidPassword(req.body.oldPassword)){
-       return next(new ErrorHandler('Old password is incorrect',401))
+       return next(new ErrorHandler('Old password is incorrect',401)) 
     }
+    //assigning new password
+    user.password =req.body.passord;
+    await user.save();
+    res.status(200).json({
+        success:true,
+        
+    })
 })
