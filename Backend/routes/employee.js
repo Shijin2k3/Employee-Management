@@ -6,8 +6,11 @@ const {isAuthenticatedUser, authorizeRoles}=require('../middlewares/authenticate
 
 
 router.route('/employees').get(isAuthenticatedUser,getEmployees);
-router.route('/employee/new').post(isAuthenticatedUser,authorizeRoles('admin'),newEmployee);
 router.route('/employee/:id').get(getSingleEmployee);
 router.route('/employee/:id').put(updateEmployee)
 router.route('/employee/:id').delete(deleteEmployee);
+
+//Admin Routes
+router.route('/admin/employee/new').post(isAuthenticatedUser,authorizeRoles('admin'),newEmployee);
+
 module.exports=router;
