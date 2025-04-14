@@ -13,7 +13,7 @@ export const Header = () => {
       };
 
     return (
-      <nav className="bg-gray-800 p-4">
+      <nav className="bg-blue-950 p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-white text-lg font-bold">EMS</div>
           <div className="hidden md:flex space-x-4 gap-6">
