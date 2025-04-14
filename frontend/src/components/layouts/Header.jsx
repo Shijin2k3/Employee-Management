@@ -40,10 +40,10 @@ export const Header = () => {
         </div>
         {isOpen && (
           <div className="md:hidden py-4">
-            <a href="#" className="block text-gray-300 hover:text-white py-3">Home</a>
-            <a href="#" className="block text-gray-300 hover:text-white py-3">About</a>
-            <a href="#" className="block text-gray-300 hover:text-white py-3">Login</a>
-            <a href="#" className="block text-gray-300 hover:text-white py-3">Contact</a>
+            <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</a>
+            <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>About</a>
+            <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</a>
+            <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Contact</a>
           </div>
         )}
       </nav>
