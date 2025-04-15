@@ -3,7 +3,7 @@ import  {thunk}  from "redux-thunk";
 
 //can create multiple state
 const reducer = combineReducers({
-
+  
 })
 
 
