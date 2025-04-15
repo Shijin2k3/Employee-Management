@@ -26,3 +26,6 @@ const employeesSlice = createSlice({
         }
     }
 });
+const {actions,reducer}=employeesSlice;
+export const { employeesRequest,employeesSuccess,employeesFail }=actions
+export default reducer;
