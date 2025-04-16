@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@layer components {
+    .loader {
+      border-color: transparent;
+      border-top-color: #3b82f6; /* Tailwind's blue-500 */
+      animation: spin 1s linear infinite;
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

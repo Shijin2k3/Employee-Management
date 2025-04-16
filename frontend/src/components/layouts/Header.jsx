@@ -28,6 +28,9 @@ export const Header = () => {
             <a href="#"  onClick={() => handleLinkClick('login')}
             className={`text-white ${activeLink === 'login' ? 'font-bold' : 'hover:text-gray-400'}`}
              >Login</a>
+            <a href="#"  onClick={() => handleLinkClick('employees')}
+            className={`text-white ${activeLink === 'employees' ? 'font-bold' : 'hover:text-gray-400'}`}
+             >Employees</a>
             <a href="#"  onClick={() => handleLinkClick('contact')}
             className={`text-white ${activeLink === 'contact' ? 'font-bold' : 'hover:text-gray-400'}`}
             >Contact</a>
@@ -43,6 +46,7 @@ export const Header = () => {
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>About</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</a>
+            <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Employees</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Contact</a>
           </div>
         )}
