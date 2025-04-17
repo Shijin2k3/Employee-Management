@@ -6,7 +6,7 @@ export const getEmployees = async (dispatch)=>{
 
     try{
      dispatch(employeesRequest())
-     const { data }=await axios.get('/api/v1/employees');
+     const { data }=await axios.get('http://localhost:8000/api/v1/employees');
      dispatch(employeesSuccess(data))
     }catch(error){
         //handle error
