@@ -13,7 +13,7 @@ export const Header = () => {
       };
 
     return (
-      <nav className="bg-blue-950 p-4">
+      <nav className="bg-blue-950 p-4 relative">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-white text-lg font-bold">EMS</div>
           <div className="hidden md:flex space-x-4 gap-6">
@@ -42,7 +42,7 @@ export const Header = () => {
           </div>
         </div>
         {isOpen && (
-          <div className="md:hidden py-4">
+          <div className="md:hidden py-4 text-center absolute left-0 right-0 top-full bg-blue-950 z-2">
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>About</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</a>
