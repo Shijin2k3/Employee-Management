@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { login } from '../../actions/userActions'
 import {useDispatch, useSelector} from 'react-redux';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify';
 
 export const Login = () => {
   const [email,setEmail]=useState("")
@@ -14,14 +14,14 @@ export const Login = () => {
     dispatch(login(email,password));
   }
 
-//   useEffect(()=>{
-//      if(error){
-//         toast.error(error,{
-//             position:toast.POSITION.BOTTOM_CENTER
-//         })
-//         return
-//      }
-//   },[error])
+  useEffect(()=>{
+     if(error){
+        toast.error(error,{
+          position: toast.POSITION.BOTTOM_CENTER
+        })
+        return
+     }
+  },[error])
     
 
   return (

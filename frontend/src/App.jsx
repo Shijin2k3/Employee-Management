@@ -5,6 +5,7 @@ import { Footer } from './components/layouts/Footer'
 import { Home } from './components/Home'
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
 import { Login } from './components/user/Login'
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Router>   
       <div>
         <Header/>
+        <ToastContainer />
           <Routes>
             <Route  path='/' element={ <Home/>}/>
             <Route  path='/login' element={ <Login/>}/>
