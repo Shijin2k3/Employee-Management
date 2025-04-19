@@ -2,26 +2,32 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { login } from '../../actions/userActions'
 import {useDispatch, useSelector} from 'react-redux';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
   const dispatch=useDispatch()
-  const {loading,error}=useSelector(state => state.authState)
+  const navigate=useNavigate()
+  const {loading,error,isAuthenticated}=useSelector(state => state.authState)
+ 
   
   const submitHandler =(e)=>{
     e.preventDefault();
     dispatch(login(email,password));
+    setEmail('')
+    setPassword('')
   }
 
   useEffect(()=>{
+    if(isAuthenticated){
+       navigate('/')
+    }
      if(error){
-        toast.error(error,{
-          position: toast.POSITION.BOTTOM_CENTER
-        })
-        return
+      toast.error(error);
+      return
      }
-  },[error])
+  },[error,isAuthenticated])
     
 
   return (

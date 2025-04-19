@@ -6,6 +6,7 @@ import { Home } from './components/Home'
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
 import { Login } from './components/user/Login'
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
