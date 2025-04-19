@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { login } from '../../actions/userActions'
+import { clearAuthError, login } from '../../actions/userActions'
 import {useDispatch, useSelector} from 'react-redux';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -24,10 +24,13 @@ export const Login = () => {
        navigate('/')
     }
      if(error){
-      toast.error(error);
+      toast(error,{
+        type:'error',
+        onOpen:()=>{ dispatch(clearAuthError)}
+      });
       return
      }
-  },[error,isAuthenticated])
+  },[error,isAuthenticated,dispatch])
     
 
   return (

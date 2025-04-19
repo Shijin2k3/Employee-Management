@@ -1,5 +1,9 @@
 import axios from "axios"
-import { loginFail, loginRequest, loginSuccess } from "../slices/authSlice"
+import { clearError, loginFail,
+    loginRequest, loginSuccess,
+    registerFail, registerRequest, 
+    registerSuccess } 
+from "../slices/authSlice"
 
 export const login=(email,password) =>async(dispatch) =>{
   try{
@@ -8,5 +12,19 @@ export const login=(email,password) =>async(dispatch) =>{
     dispatch(loginSuccess(data))
   }catch(error){
     dispatch(loginFail(error.response.data.message|| "LoginFailed"))
+  }
+}
+
+export const clearAuthError=(dispatch)=>{
+  dispatch(clearError())
+}
+
+export const register=(userData) =>async(dispatch) =>{
+  try{
+    dispatch(registerRequest())
+    const {data} = await axios.post('http://localhost:8000/api/v1/register',userData)
+    dispatch(registerSuccess(data))
+  }catch(error){
+    dispatch(registerFail(error.response.data.message|| "RegisterFailed"))
   }
 }

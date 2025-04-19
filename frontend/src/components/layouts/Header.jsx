@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +46,7 @@ export const Header = () => {
           <div className="md:hidden py-4 text-center absolute left-0 right-0 top-full bg-blue-950 z-2">
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>About</a>
-            <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</a>
+            <Link to='/login' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</Link>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Employees</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Contact</a>
           </div>
