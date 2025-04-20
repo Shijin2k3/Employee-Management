@@ -44,7 +44,7 @@ export const Header = () => {
         </div>
         {isOpen && (
           <div className="md:hidden py-4 text-center absolute left-0 right-0 top-full bg-blue-950 z-2">
-            <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</a>
+            <Link to='/' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</Link>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>About</a>
             <Link to='/login' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</Link>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Employees</a>
