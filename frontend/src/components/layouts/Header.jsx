@@ -26,12 +26,12 @@ export const Header = () => {
             onClick={() => handleLinkClick('about')}
             className={`text-white ${activeLink === 'about' ? 'font-bold' : 'hover:text-gray-400'}`}
             >About</a>
-            <Link to="/login"  onClick={() => handleLinkClick('login')}
-            className={`text-white ${activeLink === 'login' ? 'font-bold' : 'hover:text-gray-400'}`}
-             >Login</Link>
             <a href="#"  onClick={() => handleLinkClick('employees')}
             className={`text-white ${activeLink === 'employees' ? 'font-bold' : 'hover:text-gray-400'}`}
              >Employees</a>
+            <Link to="/login"  onClick={() => handleLinkClick('login')}
+            className={`text-white ${activeLink === 'login' ? 'font-bold' : 'hover:text-gray-400'}`}
+             >Login</Link>
             <a href="#"  onClick={() => handleLinkClick('contact')}
             className={`text-white ${activeLink === 'contact' ? 'font-bold' : 'hover:text-gray-400'}`}
             >Contact</a>
@@ -46,8 +46,8 @@ export const Header = () => {
           <div className="md:hidden py-4 text-center absolute left-0 right-0 top-full bg-blue-950 z-2">
             <Link to='/' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</Link>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>About</a>
-            <Link to='/login' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</Link>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Employees</a>
+            <Link to='/login' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</Link>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Contact</a>
           </div>
         )}

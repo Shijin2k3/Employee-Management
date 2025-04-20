@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 
 export const Register = () => {
+    const [userData,setUserData]=useState({
+        name:"",
+        email:"",
+        password:""
+    })
+     const handleChange=(e)=>{
+        setUserData({...userData,[e.target.name]:e.target.value})
+     }
+     const submitHandler=(e)=>{
+        e.preventDefault();
+        const formData=new FormData();
+        formData.append('name',userData.name)
+        formData.append('email',userData.email)
+        formData.append('password',userData.password)
+
+     }
+
   return (
      <Fragment>
            <div className=' bg-gradient-to-r from-blue-950 to-blue-900'>
@@ -13,35 +30,39 @@ export const Register = () => {
                            <label htmlFor="name"
                             className='block text-gray-700'>Name</label>
                            <input type="text"
+                           name='name'
                            id='name'
                            className='w-full border-2 border-gray-500'
                            value=""
+                           onChange={handleChange}
                             />
                        </div>
                        <div className='mb-4'> 
                            <label htmlFor="email"
                             className='block text-gray-700'>Email</label>
                            <input type="email"
+                           name='email'
                            id='email'
                            className='w-full border-2 border-gray-500'
-                           value={email}
-                           onChange={e => setEmail(e.target.value)} />
+                           value=""
+                           onChange={handleChange}
+                            />
                        </div>
                        <div className='mb-4'>
                            <label htmlFor="password"
                             className='block text-gray-700'>Password</label>
                            <input type="password"
                            id='password'
+                           name='password'
                            className='w-full border-2 border-gray-500'
-                           value={password}
-                           onChange={e => setPassword(e.target.value)}/>
+                           value=""
+                           onChange={handleChange}
+                           />
                        </div>
-                       <div className='mb-4 flex items-center justify-between'>
-                        <a href="">Forgot Password?</a>
-                       </div>
+                       
                        <div className='mb-4'>
-                        <button type='submit' className='w-full bg-blue-900 py-2 text-white'
-                         disabled={loading}>Register</button>
+                        <button type='submit' className='w-full bg-blue-900 py-2 mt-2 text-white'
+                         >Register</button>
                        </div>
                        <div className='mb-4 flex items-center justify-end'>
                         <a href="">Login?</a>
