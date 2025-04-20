@@ -66,6 +66,9 @@ export const Login = () => {
                     <button type='submit' className='w-full bg-blue-900 py-2 text-white'
                      disabled={loading}>Login</button>
                    </div>
+                   <div className='mb-4 flex items-center justify-end'>
+                    <a href="">Register?</a>
+                   </div>
                </form>
            </div>
        </div>

@@ -18,17 +18,17 @@ export const Header = () => {
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-white text-lg font-bold">EMS</div>
           <div className="hidden md:flex space-x-4 gap-6">
-            <a href="#"  
+            <Link to="/"  
             onClick={() => handleLinkClick('home')}
             className={`text-white ${activeLink === 'home' ? 'font-bold' : 'hover:text-gray-400'}`}
-             >Home</a>
+             >Home</Link>
             <a href="#"  
             onClick={() => handleLinkClick('about')}
             className={`text-white ${activeLink === 'about' ? 'font-bold' : 'hover:text-gray-400'}`}
             >About</a>
-            <a href="#"  onClick={() => handleLinkClick('login')}
+            <Link to="/login"  onClick={() => handleLinkClick('login')}
             className={`text-white ${activeLink === 'login' ? 'font-bold' : 'hover:text-gray-400'}`}
-             >Login</a>
+             >Login</Link>
             <a href="#"  onClick={() => handleLinkClick('employees')}
             className={`text-white ${activeLink === 'employees' ? 'font-bold' : 'hover:text-gray-400'}`}
              >Employees</a>
