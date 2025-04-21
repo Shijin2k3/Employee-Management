@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { register } from '../../actions/userActions'
 
 export const Register = () => {
     const [userData,setUserData]=useState({
@@ -6,6 +8,8 @@ export const Register = () => {
         email:"",
         password:""
     })
+    const dispatch=useDispatch()
+    const {loading,error}=useSelector(state => state.authState)
      const handleChange=(e)=>{
         setUserData({...userData,[e.target.name]:e.target.value})
      }
@@ -15,6 +19,7 @@ export const Register = () => {
         formData.append('name',userData.name)
         formData.append('email',userData.email)
         formData.append('password',userData.password)
+        dispatch(register(formData))
 
      }
 
@@ -61,7 +66,7 @@ export const Register = () => {
                        </div>
                        
                        <div className='mb-4'>
-                        <button type='submit' className='w-full bg-blue-900 py-2 mt-2 text-white'
+                        <button disabled={loading} type='submit' className='w-full bg-blue-900 py-2 mt-2 text-white'
                          >Register</button>
                        </div>
                        <div className='mb-4 flex items-center justify-end'>
