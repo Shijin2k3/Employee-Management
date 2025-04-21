@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../../actions/userActions'
 
@@ -22,7 +22,15 @@ export const Register = () => {
         dispatch(register(formData))
 
      }
-
+  useEffect(()=>{
+     if(error){
+          toast(error,{
+            type:'error',
+            onOpen:()=>{ dispatch(clearAuthError)}
+          });
+          return
+         }
+  },[error])
   return (
      <Fragment>
            <div className=' bg-gradient-to-r from-blue-950 to-blue-900'>
