@@ -1,5 +1,5 @@
 import axios from "axios"
-import { clearError, loginFail,
+import { clearError, loadUserFail, loadUserRequest, loadUserSuccess, loginFail,
     loginRequest, loginSuccess,
     registerFail, registerRequest, 
     registerSuccess } 
@@ -26,5 +26,14 @@ export const register=(userData) =>async(dispatch) =>{
     dispatch(registerSuccess(data))
   }catch(error){
     dispatch(registerFail(error.response.data.message|| "RegisterFailed"))
+  }
+}
+export const loadUser=(userData) =>async(dispatch) =>{
+  try{
+    dispatch(loadUserRequest())
+    const {data} = await axios.get('http://localhost:8000/api/v1/myprofile',userData)
+    dispatch(loadUserSuccess(data))
+  }catch(error){
+    dispatch(loadUserFail(error.response.data.message|| "loading Failed"))
   }
 }
