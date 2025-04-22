@@ -37,7 +37,7 @@ export const Register = () => {
           });
           return
          }
-  },[error,isAuthenticated,dispatch])
+  },[error,isAuthenticated,dispatch,navigate])
   return (
      <Fragment>
            <div className=' bg-gradient-to-r from-blue-950 to-blue-900'>

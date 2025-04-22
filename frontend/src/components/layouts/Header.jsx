@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeLink, setActiveLink] = useState('home');
+    const location =useLocation();
 
     const toggleMenu = () => {
       setIsOpen(!isOpen);
@@ -12,6 +13,20 @@ export const Header = () => {
     const handleLinkClick = (link) => {
         setActiveLink(link);
       };
+      useEffect(()=>{
+        const path = location.pathname;
+        if (path === '/') {
+            setActiveLink('home');
+        } else if (path === '/about') {
+            setActiveLink('about');
+        } else if (path === '/employees') {
+            setActiveLink('employees');
+        } else if (path === '/login') {
+            setActiveLink('login');
+        } else if (path === '/contact') {
+            setActiveLink('contact');
+        }
+      },[location])
 
     return (
       <nav className="bg-blue-950 p-4 relative">

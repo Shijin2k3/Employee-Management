@@ -30,7 +30,7 @@ export const Login = () => {
       });
       return
      }
-  },[error,isAuthenticated,dispatch])
+  },[error,isAuthenticated,dispatch,navigate])
     
 
   return (
