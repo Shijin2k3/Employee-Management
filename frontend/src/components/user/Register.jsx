@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { register } from '../../actions/userActions'
+import { clearAuthError, register } from '../../actions/userActions'
+import { toast } from 'react-toastify';
 
 export const Register = () => {
     const [userData,setUserData]=useState({
@@ -46,7 +47,7 @@ export const Register = () => {
                            name='name'
                            id='name'
                            className='w-full border-2 border-gray-500'
-                           value=""
+                           value={userData.name}
                            onChange={handleChange}
                             />
                        </div>
@@ -57,7 +58,7 @@ export const Register = () => {
                            name='email'
                            id='email'
                            className='w-full border-2 border-gray-500'
-                           value=""
+                           value={userData.email}
                            onChange={handleChange}
                             />
                        </div>
@@ -68,7 +69,7 @@ export const Register = () => {
                            id='password'
                            name='password'
                            className='w-full border-2 border-gray-500'
-                           value=""
+                           value={userData.password}
                            onChange={handleChange}
                            />
                        </div>
