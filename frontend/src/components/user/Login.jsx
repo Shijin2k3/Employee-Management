@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { clearAuthError, login } from '../../actions/userActions'
 import {useDispatch, useSelector} from 'react-redux';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [email,setEmail]=useState("")
@@ -67,7 +67,7 @@ export const Login = () => {
                      disabled={loading}>Login</button>
                    </div>
                    <div className='mb-4 flex items-center justify-end'>
-                    <a href="">Register?</a>
+                    <Link to='/register'>Register?</Link>
                    </div>
                </form>
            </div>

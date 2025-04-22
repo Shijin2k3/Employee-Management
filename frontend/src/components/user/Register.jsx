@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearAuthError, register } from '../../actions/userActions'
 import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Register = () => {
     const [userData,setUserData]=useState({
@@ -10,20 +11,25 @@ export const Register = () => {
         password:""
     })
     const dispatch=useDispatch()
-    const {loading,error}=useSelector(state => state.authState)
+    const navigate=useNavigate()
+    const {loading,error,isAuthenticated}=useSelector(state => state.authState)
      const handleChange=(e)=>{
         setUserData({...userData,[e.target.name]:e.target.value})
      }
      const submitHandler=(e)=>{
         e.preventDefault();
-        const formData=new FormData();
-        formData.append('name',userData.name)
-        formData.append('email',userData.email)
-        formData.append('password',userData.password)
-        dispatch(register(formData))
+        // const formData=new FormData();
+        // formData.append('name',userData.name)
+        // formData.append('email',userData.email)
+        // formData.append('password',userData.password)
+        dispatch(register(userData))
 
      }
   useEffect(()=>{
+    if(isAuthenticated){
+        navigate('/')
+        return
+    }
      if(error){
           toast(error,{
             type:'error',
@@ -31,7 +37,7 @@ export const Register = () => {
           });
           return
          }
-  },[error])
+  },[error,isAuthenticated,dispatch])
   return (
      <Fragment>
            <div className=' bg-gradient-to-r from-blue-950 to-blue-900'>
@@ -79,7 +85,7 @@ export const Register = () => {
                          >Register</button>
                        </div>
                        <div className='mb-4 flex items-center justify-end'>
-                        <a href="">Login?</a>
+                        <Link to='/login'>Login?</Link>
                        </div>
                    </form>
                </div>
