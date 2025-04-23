@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeLink, setActiveLink] = useState('home');
     const location =useLocation();
+    const{isAuthenticated,user }= useSelector(state => state.authState)
 
     const toggleMenu = () => {
       setIsOpen(!isOpen);
@@ -44,9 +46,11 @@ export const Header = () => {
             <a href="#"  onClick={() => handleLinkClick('employees')}
             className={`text-white ${activeLink === 'employees' ? 'font-bold' : 'hover:text-gray-400'}`}
              >Employees</a>
+             {isAuthenticated?"Loggedin":
             <Link to="/login"  onClick={() => handleLinkClick('login')}
             className={`text-white ${activeLink === 'login' ? 'font-bold' : 'hover:text-gray-400'}`}
              >Login</Link>
+             }
             <a href="#"  onClick={() => handleLinkClick('contact')}
             className={`text-white ${activeLink === 'contact' ? 'font-bold' : 'hover:text-gray-400'}`}
             >Contact</a>
