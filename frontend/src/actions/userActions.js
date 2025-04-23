@@ -28,12 +28,12 @@ export const register=(userData) =>async(dispatch) =>{
     dispatch(registerFail(error.response.data.message|| "RegisterFailed"))
   }
 }
-export const loadUser=(userData) =>async(dispatch) =>{
+export const loadUser=async(dispatch) =>{
   try{
     dispatch(loadUserRequest())
-    const {data} = await axios.get('http://localhost:8000/api/v1/myprofile',userData)
+    const {data} = await axios.get('http://localhost:8000/api/v1/myprofile')
     dispatch(loadUserSuccess(data))
   }catch(error){
-    dispatch(loadUserFail(error.response.data.message|| "loading Failed"))
+    dispatch(loadUserFail(error.response.data.message))
   }
 }

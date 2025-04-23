@@ -8,9 +8,16 @@ import { Login } from './components/user/Login'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Register } from './components/user/Register'
+import { useEffect } from 'react'
+import store from './store'
+import { loadUser } from './actions/userActions'
 
 
 function App() {
+
+  useEffect(()=>{
+    store.dispatch(loadUser)
+  })
 
 
   return (
