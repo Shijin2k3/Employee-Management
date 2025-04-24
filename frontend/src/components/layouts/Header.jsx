@@ -48,7 +48,7 @@ export const Header = () => {
             className={`text-white ${activeLink === 'employees' ? 'font-bold' : 'hover:text-gray-400'}`}
              >Employees</a> */}
              {isAuthenticated?
-             <><span className='text-yellow-300 font-bold'>@{user.name}</span> <Dropdown/></>:
+             <> <Dropdown user={user}/></>:
             <Link to="/login"  onClick={() => handleLinkClick('login')}
             className={`text-white ${activeLink === 'login' ? 'font-bold' : 'hover:text-gray-400'}`}
              >Login</Link>
