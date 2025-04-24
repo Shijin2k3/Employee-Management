@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('Select an option');
+  const [selectedOption, setSelectedOption] = useState();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -14,7 +14,7 @@ const Dropdown = () => {
     setIsOpen(false);
   };
 
-  const options = ['Option 1', 'Option 2', 'Option 3'];
+  const options = ['Logout', 'Option 2', 'Option 3'];
 
   return (
     <div className="relative inline-block text-left">

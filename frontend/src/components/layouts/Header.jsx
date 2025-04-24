@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import Dropdown from './Dropdown';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -43,10 +44,11 @@ export const Header = () => {
             onClick={() => handleLinkClick('about')}
             className={`text-white ${activeLink === 'about' ? 'font-bold' : 'hover:text-gray-400'}`}
             >About</a>
-            <a href="#"  onClick={() => handleLinkClick('employees')}
+            {/* <a href="#"  onClick={() => handleLinkClick('employees')}
             className={`text-white ${activeLink === 'employees' ? 'font-bold' : 'hover:text-gray-400'}`}
-             >Employees</a>
-             {isAuthenticated?"Loggedin":
+             >Employees</a> */}
+             {isAuthenticated?
+             <><span className='text-yellow-300 font-bold'>@{user.name}</span> <Dropdown/></>:
             <Link to="/login"  onClick={() => handleLinkClick('login')}
             className={`text-white ${activeLink === 'login' ? 'font-bold' : 'hover:text-gray-400'}`}
              >Login</Link>
@@ -66,7 +68,12 @@ export const Header = () => {
             <Link to='/' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</Link>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>About</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Employees</a>
-            <Link to='/login' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Login</Link>
+            {isAuthenticated?"loggedIn":
+             <Link to='/login' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>
+              Login
+             </Link>
+             }
+           
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Contact</a>
           </div>
         )}
