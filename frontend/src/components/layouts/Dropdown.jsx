@@ -51,6 +51,12 @@ const Dropdown = ({user}) => {
           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
           
               <button
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                role="menuitem"
+              >
+                Profile
+              </button>
+              <button
                 onClick={logoutHandler}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                 role="menuitem"
