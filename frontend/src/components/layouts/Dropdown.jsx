@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import { logout } from '../../actions/userActions';
+import {useNavigate} from 'react-router-dom';
 
 const Dropdown = ({user}) => {
   const [isOpen, setIsOpen] = useState(false);
   // const [selectedOption, setSelectedOption] = useState();
   const dispatch=useDispatch()
+  const navigate=useNavigate()
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -51,6 +53,11 @@ const Dropdown = ({user}) => {
           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
           
               <button
+              onClick={()=>{
+                navigate('/myprofile')
+                setIsOpen(false)
+
+              }}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                 role="menuitem"
               >
@@ -58,7 +65,7 @@ const Dropdown = ({user}) => {
               </button>
               <button
                 onClick={logoutHandler}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                className="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100 w-full text-left"
                 role="menuitem"
               >
                 Logout
