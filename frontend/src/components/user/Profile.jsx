@@ -22,18 +22,22 @@ export const Profile = () => {
           <button className=' bg-blue-600 text-white w-30 h-8 rounded-lg'>Edit Profile</button>
           </div>
           </div>
-            <div className="p-8 ">
+          <div className='grid grid-cols-1 md:grid-cols-2 gap:2 md:gap-4 m-3 md:m-8'>
+            <div className="p-8 border-1">
             <h2 className="text-lg font-semibold">About Me</h2>
             <p className="text-gray-700">{employee.bio}</p>
           </div>
-          <div className="p-8 ">
+          <div className="p-8 border-1">
             <h2 className="text-lg font-semibold">Department</h2>
             <p className="text-gray-700">{employee.department}</p>
           </div>
-          <div className="p-8 ">
-            <h2 className="text-lg font-semibold">Contact Information</h2>
-            <p className="text-gray-700">Email: {employee.email}</p>
-            <p className="text-gray-700">Phone: {employee.phone}</p>
+          <div className="p-8 border-1">
+            <h2 className="text-lg font-semibold">Email Adress</h2>
+            <p className="text-gray-700">{employee.email}</p>
+          </div>
+          <div className="p-8 border-1">
+            <h2 className="text-lg font-semibold">Change Password</h2>
+          </div>
           </div>
          
         </div>
