@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 import store from './store'
 import { loadUser } from './actions/userActions'
 import { Profile } from './components/user/Profile'
+import ProtectedRoute from './components/route/ProtectedRoute'
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
             <Route  path='/' element={ <Home/>}/>
             <Route  path='/login' element={ <Login/>}/>
             <Route  path='/register' element={ <Register/>}/>
-            <Route  path='/myprofile' element={ <Profile/>}/>
+            <Route  path='/myprofile' element={ <ProtectedRoute><Profile/></ProtectedRoute>}/>
             
           </Routes>
         <Footer />

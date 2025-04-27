@@ -17,6 +17,7 @@ const Dropdown = ({user}) => {
   const logoutHandler = () => {
     // setSelectedOption(option);
     dispatch(logout);
+    navigate('/')
     setIsOpen(false);
   };
 
