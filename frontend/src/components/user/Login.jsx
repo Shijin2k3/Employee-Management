@@ -15,8 +15,6 @@ export const Login = () => {
   const submitHandler =(e)=>{
     e.preventDefault();
     dispatch(login(email,password));
-    setEmail('')
-    setPassword('')
   }
 
   useEffect(()=>{
