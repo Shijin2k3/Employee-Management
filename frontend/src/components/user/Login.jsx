@@ -61,7 +61,7 @@ export const Login = () => {
                     <a href="">Forgot Password?</a>
                    </div>
                    <div className='mb-4'>
-                    <button type='submit' className='w-full bg-blue-900 py-2 text-white'
+                    <button type='submit' className='w-full bg-blue-900 py-2 text-white cursor-pointer'
                      disabled={loading}>Login</button>
                    </div>
                    <div className='mb-4 flex items-center justify-end'>

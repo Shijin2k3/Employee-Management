@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 
 export const Profile = () => {
@@ -13,7 +14,7 @@ export const Profile = () => {
               <p className="text-gray-600  md:text-xl">{user.position}</p>  
             </div>
             <div className='flex items-center p-4  justify-end'>
-          <button className=' bg-blue-600 text-white w-30 h-8 rounded-lg'>Edit Profile</button>
+          <Link to='/myprofile/update' className=' bg-blue-600 text-white w-30 h-8 rounded-lg text-center pt-1'>Edit Profile</Link>
           </div>
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 m-3 md:m-8'>
