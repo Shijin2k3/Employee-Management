@@ -4,7 +4,10 @@ import { clearError, loadUserFail, loadUserRequest, loadUserSuccess, loginFail,
     logoutFail,
     logoutSuccess,
     registerFail, registerRequest, 
-    registerSuccess } 
+    registerSuccess, 
+    updateProfileFail, 
+    updateProfileRequest,
+    updateProfileSuccess} 
 from "../slices/authSlice"
 
 export const login=(email,password) =>async(dispatch) =>{
@@ -45,5 +48,14 @@ export const logout=async(dispatch) =>{
     dispatch(logoutSuccess())
   }catch(error){
     dispatch(logoutFail(error.response.data.message))
+  }
+}
+export const updateProfile=(userData) =>async(dispatch) =>{
+  try{
+    dispatch(updateProfileRequest())
+    const {data} = await axios.post('http://localhost:8000/api/v1/update',userData)
+    dispatch(updateProfileSuccess(data))
+  }catch(error){
+    dispatch(updateProfileFail(error.response.data.message|| "RegisterFailed"))
   }
 }
