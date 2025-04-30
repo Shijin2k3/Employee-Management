@@ -1,15 +1,46 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { clearAuthError, updateProfile } from '../../actions/userActions';
 
 export const UpdateProfile = () => {
-  const {loading,error,user,isUpdate}=useSelector(state => state.authState);
-  const [name,setName]=useState("")
-  const [email,setEmail]=useState("")
+  const {loading,error,user,isUpdated}=useSelector(state => state.authState);
+ const [userData,setUserData]=useState({
+         name:"",
+         email:"",
+     })
   const dispatch=useDispatch()
 
+  const handleChange=(e)=>{
+    setUserData({...userData,[e.target.name]:e.target.value})
+ }
+
   const submitHandler=()=>{
-    
+    e.preventDefault()
+    dispatch(updateProfile(userData))
   }
+
+ useEffect(()=>{
+  if(user){
+    setUserData({
+      name: user.name,
+      email: user.email,
+    })
+  }
+  if(isUpdated){
+    toast('profile updated successfully',{
+      type:'success'
+    })
+    return;
+  }
+  if(error){
+    toast(error,{
+      type:'error',
+      onOpen:()=>{ dispatch(clearAuthError)}
+     });
+    return
+   }
+ },[user,isUpdated,error,dispatch])
+
   return (
     <Fragment>
            <div className=' bg-gradient-to-r from-blue-950 to-blue-900'>
@@ -25,8 +56,8 @@ export const UpdateProfile = () => {
                            name='name'
                            id='name'
                            className='w-full border-2 border-gray-500'
-                            value={name}
-                            onChange={e=>setName(e.target.value)}
+                            value={userData.name}
+                            onChange={handleChange}
                             />
                        </div>
                        <div className='mb-4'> 
@@ -36,13 +67,13 @@ export const UpdateProfile = () => {
                            name='email'
                            id='email'
                            className='w-full border-2 border-gray-500'
-                           value={email}
-                           onChange={e=>setEmail(e.target.value)}
+                           value={userData.email}
+                           onChange={handleChange}
                            />
                        </div>
                        
                        <div className='mb-4 mt-10'>
-                        <button  type='submit' className='w-full bg-blue-900 py-2 mt-2 text-white'
+                        <button disabled={loading} type='submit' className='w-full bg-blue-900 py-2 mt-2 text-white'
                          >Update Profile</button>
                        </div>
                    </form>

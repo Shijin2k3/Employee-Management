@@ -53,7 +53,7 @@ export const logout=async(dispatch) =>{
 export const updateProfile=(userData) =>async(dispatch) =>{
   try{
     dispatch(updateProfileRequest())
-    const {data} = await axios.post('http://localhost:8000/api/v1/update',userData)
+    const {data} = await axios.put('http://localhost:8000/api/v1/update',userData)
     dispatch(updateProfileSuccess(data))
   }catch(error){
     dispatch(updateProfileFail(error.response.data.message|| "RegisterFailed"))
