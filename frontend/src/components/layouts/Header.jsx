@@ -68,7 +68,7 @@ export const Header = () => {
             <Link to='/' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Home</Link>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>About</a>
             <a href="#" className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>Employees</a>
-            {isAuthenticated?"loggedIn":
+            {isAuthenticated? <> <Dropdown user={user}/></>:
              <Link to='/login' className="block text-gray-300 hover:text-white py-3" onClick={toggleMenu}>
               Login
              </Link>
