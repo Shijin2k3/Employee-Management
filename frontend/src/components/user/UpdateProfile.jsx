@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearAuthError, updateProfile } from '../../actions/userActions';
+import { toast } from 'react-toastify';
 
 export const UpdateProfile = () => {
   const {loading,error,user,isUpdated}=useSelector(state => state.authState);
@@ -12,9 +13,10 @@ export const UpdateProfile = () => {
 
   const handleChange=(e)=>{
     setUserData({...userData,[e.target.name]:e.target.value})
- }
+    
+  }
 
-  const submitHandler=()=>{
+  const submitHandler=(e)=>{
     e.preventDefault()
     dispatch(updateProfile(userData))
   }

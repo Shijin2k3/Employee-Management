@@ -53,9 +53,16 @@ export const logout=async(dispatch) =>{
 export const updateProfile=(userData) =>async(dispatch) =>{
   try{
     dispatch(updateProfileRequest())
-    const {data} = await axios.put('http://localhost:8000/api/v1/update',userData)
+    const { authState: { user } } = getState();
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`, // Include the token
+      },
+    };
+    const {data} = await axios.put('http://localhost:8000/api/v1/update',userData,config)
     dispatch(updateProfileSuccess(data))
   }catch(error){
-    dispatch(updateProfileFail(error.response.data.message|| "RegisterFailed"))
+    dispatch(updateProfileFail(error.response.data.message))
   }
 }

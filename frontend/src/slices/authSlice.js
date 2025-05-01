@@ -91,7 +91,6 @@ const authSlice = createSlice({
         updateProfileRequest(state,action){
             return {
                 ...state,
-                isAuthenticated:true,
                 loading:true,
                 isUpdated:false
             }
@@ -99,7 +98,6 @@ const authSlice = createSlice({
         updateProfileSuccess(state,action){
            return {
                 ...state,
-                isAuthenticated:true,
                 loading:false,
                 user:action.payload.user,
                 isUpdated:true
@@ -108,7 +106,6 @@ const authSlice = createSlice({
         updateProfileFail(state,action){
             return {
                 ...state,
-                isAuthenticated:true,
                 loading:false,
                 error: action.payload
             }
