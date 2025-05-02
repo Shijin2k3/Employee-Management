@@ -13,7 +13,7 @@ from "../slices/authSlice"
 export const login=(email,password) =>async(dispatch) =>{
   try{
     dispatch(loginRequest())
-    const {data} = await axios.post('http://localhost:8000/api/v1/login',{email,password})
+    const {data} = await axios.post('http://localhost:8000/api/v1/login',{email,password},{withCredentials:true})
     dispatch(loginSuccess(data))
   }catch(error){
     dispatch(loginFail(error.response.data.message|| "LoginFailed"))
@@ -53,14 +53,8 @@ export const logout=async(dispatch) =>{
 export const updateProfile=(userData) =>async(dispatch) =>{
   try{
     dispatch(updateProfileRequest())
-    const { authState: { user } } = getState();
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`, // Include the token
-      },
-    };
-    const {data} = await axios.put('http://localhost:8000/api/v1/update',userData,config)
+  
+    const {data} = await axios.put('http://localhost:8000/api/v1/update',userData,{withCredentials:true})
     dispatch(updateProfileSuccess(data))
   }catch(error){
     dispatch(updateProfileFail(error.response.data.message))
