@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearAuthError, updateProfile } from '../../actions/userActions';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 export const UpdateProfile = () => {
   const {loading,error,user,isUpdated}=useSelector(state => state.authState);
@@ -77,6 +78,9 @@ export const UpdateProfile = () => {
                        <div className='mb-4 mt-10'>
                         <button disabled={loading} type='submit' className='w-full bg-blue-900 py-2 mt-2 text-white'
                          >Update Profile</button>
+                       </div>
+                       <div className='mb-4 flex items-center justify-end'>
+                        <Link to='/myprofile'>View Profile</Link>
                        </div>
                    </form>
                </div>

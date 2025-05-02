@@ -5,6 +5,9 @@ import { clearError, loadUserFail, loadUserRequest, loadUserSuccess, loginFail,
     logoutSuccess,
     registerFail, registerRequest, 
     registerSuccess, 
+    updatePasswordFail, 
+    updatePasswordRequest, 
+    updatePasswordSuccess, 
     updateProfileFail, 
     updateProfileRequest,
     updateProfileSuccess} 
@@ -60,3 +63,14 @@ export const updateProfile=(userData) =>async(dispatch) =>{
     dispatch(updateProfileFail(error.response.data.message))
   }
 }
+export const updatePassword=(formData) =>async(dispatch) =>{
+  try{
+    dispatch(updatePasswordRequest())
+  
+    const {data} = await axios.put('http://localhost:8000/api/v1/password/change',userData,{withCredentials:true})
+    dispatch(updatePasswordSuccess(data))
+  }catch(error){
+    dispatch(updatePasswordFail(error.response.data.message))
+  }
+}
+
