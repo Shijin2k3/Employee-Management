@@ -80,7 +80,7 @@ export const UpdateProfile = () => {
                          >Update Profile</button>
                        </div>
                        <div className='mb-4 flex items-center justify-end'>
-                        <Link to='/myprofile'>View Profile</Link>
+                        <Link to='/myprofile'>Back</Link>
                        </div>
                    </form>
                </div>

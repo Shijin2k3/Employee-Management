@@ -39,7 +39,7 @@ export const Profile = () => {
             <p className="text-gray-700">{String(user.createdAt).substring(0,10)}</p>
           </div>
           <div className="p-8 shadow-lg bg-slate-100">
-            <h2 className="text-lg font-semibold">Change Password</h2>
+            <Link to='/myprofile/update/password' className="text-lg font-semibold">Change Password</Link>
           </div>
           </div>
          
