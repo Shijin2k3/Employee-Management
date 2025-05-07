@@ -63,11 +63,11 @@ export const updateProfile=(userData) =>async(dispatch) =>{
     dispatch(updateProfileFail(error.response.data.message))
   }
 }
-export const updatePassword=(formData) =>async(dispatch) =>{
+export const updatePassword=({oldPassword,password}) =>async(dispatch) =>{
   try{
     dispatch(updatePasswordRequest())
   
-    const {data} = await axios.put('http://localhost:8000/api/v1/password/change',formData,{withCredentials:true})
+    const {data} = await axios.put('http://localhost:8000/api/v1/password/change',{oldPassword,password}, { withCredentials: true })
     dispatch(updatePasswordSuccess(data))
   }catch(error){
     dispatch(updatePasswordFail(error.response.data.message))

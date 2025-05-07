@@ -10,14 +10,11 @@ const UpdatePassword = () => {
   const [oldPassword,setOldPassword]=useState("")
    const dispatch=useDispatch()
 
-  const {isUpdated,error}=useSelector(state => state.authState)
+  const {isUpdated,error,loading}=useSelector(state => state.authState)
 
   const submitHandler =(e)=>{
     e.preventDefault();
-    const formData= new FormData();
-    formData.append('oldPassword',oldPassword);
-    formData.append('password',password);
-    dispatch(updatePasswordAction(formData))
+    dispatch(updatePasswordAction(oldPassword,password))
     
   }
   useEffect(()=>{
@@ -74,7 +71,7 @@ const UpdatePassword = () => {
                              />
                           </div>                          
                           <div className='mb-4'>
-                           <button  type='submit' className='w-full bg-blue-900 py-2 mt-2 text-white'
+                           <button  disabled={loading} type='submit' className='w-full bg-blue-900 py-2 mt-2 text-white cursor-pointer'
                              >Update Password</button>
                           </div>
                           <div className='mb-4 flex items-center justify-end'>
