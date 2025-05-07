@@ -121,14 +121,22 @@ exports.getUserProfile=catchAsyncError(async(req,res,next)=>{
 })
 //change Password -api/v1/password/change
 exports.changePassword = catchAsyncError(async(req,res,next)=>{
+    const { oldPassword, password } = req.body;
+
+    // Validate input
+    if (!oldPassword || !password) {
+        return next(new ErrorHandler('Please provide both old and new passwords', 400));
+    }
+
+
     const user = await User.findById(req.user.id).select('+password')
 
     //check old password 
-    if(await user.isValidPassword(req.body.oldPassword)){
+    if(!(await user.isValidPassword(oldPassword))){
        return next(new ErrorHandler('Old password is incorrect',401)) 
     }
     //assigning new password
-    user.password =req.body.passord;
+    user.password =password;
     await user.save();
     res.status(200).json({
         success:true,

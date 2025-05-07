@@ -52,11 +52,11 @@ const UpdatePassword = () => {
                           <h1 className='mb-4 text-2xl font-bold '>Update Password</h1>
                          
                           <div className='mb-4'> 
-                              <label htmlFor="oldpassword"
+                              <label htmlFor="oldPassword"
                                className='block text-gray-700'> old Password</label>
                               <input type="password"
-                              name='oldpassword'
-                              id='oldpassword'
+                              name='oldPassword'
+                              id='oldPassword'
                               className='w-full border-2 border-gray-500'
                               value={oldPassword}
                               onChange={e => setOldPassword(e.target.value)}
