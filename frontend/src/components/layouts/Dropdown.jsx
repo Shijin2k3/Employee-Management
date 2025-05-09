@@ -52,7 +52,18 @@ const Dropdown = ({user}) => {
       {isOpen && (
         <div className="absolute right-0 z-10 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-          
+          <button
+              onClick={()=>{
+                navigate('/dashboard')
+                setIsOpen(false)
+
+                
+              }}
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                role="menuitem"
+              >
+                Dashboard
+              </button>
               <button
               onClick={()=>{
                 navigate('/myprofile')
