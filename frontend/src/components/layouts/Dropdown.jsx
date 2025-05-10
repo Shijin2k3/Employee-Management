@@ -54,7 +54,7 @@ const Dropdown = ({user}) => {
           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
          { user.role === 'admin' &&<button
               onClick={()=>{
-                navigate('/dashboard')
+                navigate('/admin/dashboard')
                 setIsOpen(false)
 
                 

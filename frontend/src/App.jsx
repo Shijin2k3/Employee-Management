@@ -15,6 +15,7 @@ import { Profile } from './components/user/Profile'
 import ProtectedRoute from './components/route/ProtectedRoute'
 import { UpdateProfile } from './components/user/UpdateProfile'
 import UpdatePassword from './components/user/UpdatePassword'
+import Dashboard from './components/admin/Dashboard'
 
 
 function App() {
@@ -28,16 +29,22 @@ function App() {
     <Router>   
       <div>
         <Header/>
-        <ToastContainer />
+          <div>
+            <ToastContainer />
+            <Routes>
+              <Route  path='/' element={ <Home/>}/>
+              <Route  path='/login' element={ <Login/>}/>
+              <Route  path='/register' element={ <Register/>}/>
+              <Route  path='/myprofile' element={ <ProtectedRoute><Profile/></ProtectedRoute>}/>
+              <Route  path='/myprofile/update' element={ <ProtectedRoute><UpdateProfile/></ProtectedRoute>}/>
+              <Route  path='/myprofile/update/password' element={ <ProtectedRoute><UpdatePassword/></ProtectedRoute>}/>
+              
+            </Routes>
+          </div>
           <Routes>
-            <Route  path='/' element={ <Home/>}/>
-            <Route  path='/login' element={ <Login/>}/>
-            <Route  path='/register' element={ <Register/>}/>
-            <Route  path='/myprofile' element={ <ProtectedRoute><Profile/></ProtectedRoute>}/>
-            <Route  path='/myprofile/update' element={ <ProtectedRoute><UpdateProfile/></ProtectedRoute>}/>
-            <Route  path='/myprofile/update/password' element={ <ProtectedRoute><UpdatePassword/></ProtectedRoute>}/>
-            
+            <Route path='/admin/dashboard' element={<Dashboard/>}/>
           </Routes>
+
         <Footer />
       </div>
     </Router>
